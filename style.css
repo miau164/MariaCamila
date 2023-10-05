@@ -102,6 +102,8 @@ wsp{
     background-image : url("miradaguarne.png");
     background-repeat: no repeat;
     background-size :containt;
+    maxweidth:1200px;
+    maxheight:1200px;
     margin: 0;
     padding: 0;
     box-sizing: content-box;
