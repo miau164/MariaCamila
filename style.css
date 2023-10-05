@@ -104,6 +104,8 @@ wsp{
     background-size :containt;
     maxweidth:1200px;
     maxheight:1200px;
+    weidth:70%;
+    height:70%
     margin: 0;
     padding: 0;
     box-sizing: content-box;
