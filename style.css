@@ -98,8 +98,10 @@ wsp{
     height:150px;
 }
 #capturable-content{
-    background: transparent;
-    background-color: transparent;
+    background-color: rgb(55, 63, 112);
+    background-image : url("miradaguarne.png");
+    background-repeat: no repeat;
+    background-size :containt;
     margin: 0;
     padding: 0;
     box-sizing: content-box;
