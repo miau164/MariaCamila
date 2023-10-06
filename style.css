@@ -29,9 +29,9 @@ h1 {
     object-position: -20px;
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    font-weight: 900;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-weight: 900px;
     font-size:35px;
     color: rgb(255, 255, 255);
     background-color: rgb(253, 2, 21);
@@ -100,6 +100,17 @@ button {
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
     font-size: 16px; /* Tamaño de fuente */
     height: 100%;
+}
+@media screen and (max-width: 768px) {
+    .button {
+        grid-template-columns: 1fr; /* Cambiar a una sola columna */
+        text-align: center; /* Centrar el texto horizontalmente */
+    }
+
+    /* Centrar los botones verticalmente */
+    .button > * {
+        align-self: center;
+    }
 }
 
 .image-input{
