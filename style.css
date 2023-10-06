@@ -10,6 +10,13 @@ body {
     background-size :containt;
     background-repeat: no repeat;
     background-size :containt;
+    font-size: 3vw;
+      }
+      @media screen and (min-width: 1600px) {
+        body {
+           font-size: 30px;
+        }
+      }
     margin: 0;
     padding: 0;
     top:10%;
