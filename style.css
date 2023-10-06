@@ -37,14 +37,7 @@ h1 {
     transform: rotate(-2deg);
     border-radius: 5px;
 }
-#rojo {
-    font-size: 12vw;
-  }
-  @media screen and (min-width: 1600px) {
-    #rojo {
-       font-size: 12vh;
-    }
-  }
+
   h1,h2,h3{
     margin-top: -60%;
   }
