@@ -46,7 +46,7 @@ h1 {
     }
   }
   h1,h2,h3{
-    margin-top: -30%;
+    margin-top: -50%;
   }
 h2 {
     white-space: nowrap;
@@ -69,6 +69,7 @@ h3 {
     font-size: 2vh;
     background-color: transparent;
     transform: rotate(-2deg);
+    margin-bottom: 10px;
 }
 
 img {
