@@ -39,7 +39,7 @@ h1 {
     border-radius: 5px;
 }
 #rojo {
-    font-size: 8vw;
+    font-size: 12vw;
   }
   @media screen and (min-width: 1600px) {
     #rojo {
