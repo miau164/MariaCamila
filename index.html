@@ -124,11 +124,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     // Luego, realiza la captura de pantalla aquí
                     html2canvas(capturableContent).then(function(canvas) {
                         // Resto del código de captura aquí
-    });
-});
+    
+                    })
+                })
+            })
+        })
 
-            });
-        });
+
+            
+
 
         if('share' in navigator){
             $bthshare.addEventListener('click', share)
@@ -149,11 +153,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }else {
             alert('No está disponible el api de webshare')
         
-
+            }
 });
+
      
      
 
     </script>
 </body>
 </html>
+
