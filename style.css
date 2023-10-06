@@ -36,15 +36,15 @@ h1 {
     background-color: rgb(253, 2, 21);
     transform: rotate(-2deg);
     border-radius: 5px;
-    body {
-        font-size: 3vw;
-      }
-      @media screen and (min-width: 1600px) {
-        body {
-           font-size: 30px;
-        }
-      }
 }
+#rojo {
+    font-size: 3vw;
+  }
+  @media screen and (min-width: 1600px) {
+    #rojo {
+       font-size: 30px;
+    }
+  }
 h2 {
     position: relative;
     top: -50px;
