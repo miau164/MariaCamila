@@ -31,7 +31,7 @@ h1 {
     padding-right: 10px;
     padding-left: 10px;
     font-weight: 35px;
-    font-size:8vh;
+    font-size:12vh;
     color: rgb(255, 255, 255);
     background-color: rgb(253, 2, 21);
     transform: rotate(-2deg);
@@ -42,7 +42,7 @@ h1 {
   }
   @media screen and (min-width: 1600px) {
     #rojo {
-       font-size: 30px;
+       font-size: 12vh;
     }
   }
   h1,h2,h3{
@@ -103,7 +103,17 @@ button {
     height: 100%;
 }
 
+@media screen and (max-width: 768px) {
+    .button {
+        grid-template-columns: 1fr; /* Cambiar a una sola columna */
+        text-align: center; /* Centrar el texto horizontalmente */
+    }
 
+    /* Centrar los botones verticalmente */
+    .button > * {
+        align-self: center;
+    }
+}
 .image-input{
     background-color: #000000; /* Color de fondo */
     color: #fff; /* Color del texto */
