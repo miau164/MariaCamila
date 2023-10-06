@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 </head>
 <body>
-    <img src='image.jpg' visibility:hidden alt="Captured Image">
+<img class="shareimg" src='image.jpg' visibility:hidden alt="Captured Image">
     <div id="capturable-content" >
         <!-- Contenido que deseas capturar -->
         <img id="captured-image"  alt="Captured Image">
@@ -20,13 +20,13 @@
     </div>
     <!--<img id="imgcaptura" alt="Captura de Pantalla">-->
 
-<div class="button" >
+<div>
   
         <label class="boton-personalizado" for="image-input">Seleccionar Imagén</label>
         <input type="file" accept="image/*" id="image-input" style="display: none;">
-        <button id="capture-button" >Tomar Foto</button>
-        <button id="bthshare" >Compartir</button>
-        <button id="wsp" style="font-size:24px">¡Unete al Grupo de WhatsApp! <i class="fa fa-whatsapp"></i></button>
+        <button class="button" id="capture-button" >Tomar Foto</button>
+        <button class="button" id="bthshare" >Compartir</button>
+        <button class="button" id="wsp" style="font-size:24px">¡Unete al Grupo de WhatsApp! <i class="fa fa-whatsapp"></i></button>
         
        <!-- <button id="bthscrenshoot">Capturar</button>>-->
     </div>
