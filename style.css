@@ -27,11 +27,11 @@ h1 {
     top: -50px;
     margin: 0;
     object-position: -20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 50px;
-    padding-left: 50px;
-    font-weight: 900px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    font-weight: 900;
     font-size:35px;
     color: rgb(255, 255, 255);
     background-color: rgb(253, 2, 21);
