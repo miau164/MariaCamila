@@ -75,7 +75,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         const capscreenshot =document.getElementById("bthscrenshoot");
-        const capturableContent = document.getElementById('capturable-content');
+      const capturableContent = document.getElementById('capturable-content');
+
+            captureButton.addEventListener("click", function() {
+                // Capturar el contenido deseado como una imagen
+                html2canvas(capturableContent).then(function(canvas) {
+                    // Convertir el canvas a una imagen
+                    const imageURL = canvas.toDataURL('image/png');
+
+                    // Opcional: Descargar la imagen
+                    const a = document.createElement('a');
+                    a.href = imageURL;
+                    a.download = 'captura.png'; // Nombre de archivo para la descarga
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                });
+            });
+       /* const capturableContent = document.getElementById('capturable-content');
         const captura = document.getElementById('imgcaptura');
 
         capscreenshot.addEventListener('click', function() {
@@ -128,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         }else {
             alert('No está disponible el api de webshare')
-        }
+        }*/
 
 });
      
