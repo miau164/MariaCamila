@@ -102,8 +102,9 @@
                     // Luego, realiza la captura de pantalla aquí
                     html2canvas(capturableContent).then(function(canvas) {
                         // Resto del código de captura aquí
+                        });
     });*/
-});
+
 
             });
         });
@@ -114,7 +115,7 @@
                 navigator.share({
                     tittle: 'La Nueva Mirada de Guarne',
                     text: ' Apoyanos subiendo tu foto, ingresa al grupo de WhatsApp',
-                    url:'./whats.png',
+                    url:'./image.png',
                 })
                 .then(()=>{
                     alert('Hemos logrado compartir')
