@@ -31,15 +31,16 @@ h1 {
     padding-right: 10px;
     padding-left: 10px;
     font-weight: 900px;
-    font-size:12vh;
+    font-size:8vh;
     color: rgb(255, 255, 255);
     background-color: rgb(253, 2, 21);
     transform: rotate(-2deg);
     border-radius: 5px;
 }
 
+
   h1,h2,h3{
-    margin-top: -60%;
+    margin-top: -50%;
   }
 h2 {
     white-space: nowrap;
