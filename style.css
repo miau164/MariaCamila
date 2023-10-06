@@ -78,7 +78,7 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: auto auto;
 }
-.button {
+button {
     background-color: #000000; /* Color de fondo */
     color: #fff; /* Color del texto */
     padding: 10px 20px; /* Espaciado interno (arriba/abajo izquierda/derecha) */
@@ -126,5 +126,6 @@ img {
 
 .shareimg{
     visibility:hidden;
+    margin: 0;
 
 }
