@@ -46,7 +46,7 @@ h1 {
     }
   }
   h1,h2,h3{
-    top: -75%;
+    top: -45%;
   }
 h2 {
     white-space: nowrap;
@@ -55,7 +55,7 @@ h2 {
     padding: 0;
     color: rgb(255, 255, 255);
     font-weight: 900px;
-    font-size: 5vh;
+    font-size: 4vh;
     background-color: transparent;
     transform: rotate(-2deg);
 }
@@ -66,7 +66,7 @@ h3 {
     padding: 0;
     color: rgb(255, 255, 255);
     font-weight: 900;
-    font-size: 5vh;
+    font-size: 4vh;
     background-color: transparent;
     transform: rotate(-2deg);
 }
