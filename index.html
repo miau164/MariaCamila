@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 capturedImage.src = imageURL;
                 stream.getVideoTracks()[0].stop();
             } catch (error) {
+                capturedImage.src = imageURL;
                 console.error("Error accessing the camera: ", error);
             }
             capturedImage.style.display = 'inline-block';
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
         const capscreenshot =document.getElementById("bthscrenshoot");
-      const capturableContent = document.getElementById('capturable-content');
+        const capturableContent = document.getElementById('capturable-content');
 
             captureButton.addEventListener("click", function() {
                 // Capturar el contenido deseado como una imagen
