@@ -102,17 +102,7 @@ button {
     font-size: 16px; /* Tamaño de fuente */
     height: 100%;
 }
-@media screen and (max-width: 768px) {
-    .button {
-        grid-template-columns: 1fr; /* Cambiar a una sola columna */
-        text-align: center; /* Centrar el texto horizontalmente */
-    }
 
-    /* Centrar los botones verticalmente */
-    .button > * {
-        align-self: center;
-    }
-}
 
 .image-input{
     background-color: #000000; /* Color de fondo */
