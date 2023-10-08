@@ -1,215 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link  type="text/css" rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
-    <div id="content-image">
-        <center>
-            <div id="capturable-content">
-                <img id="captured-image">
-            </div>
-            <h1 id="rojo">
-                YO VOTO
-            </h1>
-            <h2>
-                MARIA CAMILA
-            </h2>
-            <h3>
-                ALCALDIA 2024 - 2027s
-            </h3>
-        </center>
+    <div id="capturable-content" >
+        <!-- Contenido que deseas capturar -->
+        <img id="captured-image"  alt="Captured Image">
+        <h1 id="rojo">YO VOTO</h1>
+        <h2>MARIA CAMILA</h2>
+        <h3>ALCALDIA 2024 - 2027</h3>
+
+
     </div>
-    <div class="button">
-        <label class="boton-personalizado" for="image-input">
-            Seleccionar Imagén
-        </label>
-        <input accept="image/*" id="image-input" style="display: none;" type="file">
-        <button id="capture-button">
-            Tomar Foto
-        </button>
-        <!-- <button id="share-whatsapp">
-            Compartir en WhatsApp
-        </button> -->
-        <button id="share-facebook">
-            Compartir en Facebook
-        </button>
-        <button id="wsp" style="font-size:24px">
-            ¡Unete al Grupo de WhatsApp!
-            <i class="fa fa-whatsapp">
-            </i>
-        </button>
-    </input>
-</div>
+    <!--<img id="imgcaptura" alt="Captura de Pantalla">-->
+
+<div class="button">
+  
+        <label class="boton-personalizado" for="image-input">Seleccionar Imagén</label>
+        <input type="file" accept="image/*" id="image-input" style="display: none;">
+        <button  id="capture-button" >Tomar Foto</button>
+        <button  id="bthshare" >Compartir</button>
+        <button  id="wsp" style="font-size:24px">¡Unete al Grupo de WhatsApp! <i class="fa fa-whatsapp"></i></button>
+        
+       <!-- <button id="bthscrenshoot">Capturar</button>>-->
+    </div>
+
+
+    <script>
+
+        const captureButton = document.getElementById("capture-button");
+        const imageInput = document.getElementById("image-input");
+        const capturedImage = document.getElementById("captured-image");    
+        const canvas = document.createElement("canvas");
+        const $bthshare= document.querySelector('#bthshare');
+        const botonwsp = document.getElementById("wsp");
+        
+        
+        wsp.addEventListener("click", function(){
+            const url ="https://chat.whatsapp.com/F3UQxS9hi5q6jbp3E7Sdfr";
+            window.open(url, "_blank");
+        })
+
+        imageInput.addEventListener("change", (e) => {
+            const selectedFile = e.target.files[0];
+            if (selectedFile) {
+                const imageURL = URL.createObjectURL(selectedFile);
+                capturedImage.src = imageURL;
+            }
+        });
+
+        captureButton.addEventListener("click", async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const mediaStreamTrack = stream.getVideoTracks()[0];
+                const imageCapture = new ImageCapture(mediaStreamTrack);
+                const blob = await imageCapture.takePhoto();
+                const imageURL = URL.createObjectURL(blob);
+                capturedImage.src = imageURL;
+                stream.getVideoTracks()[0].stop();
+            } catch (error) {
+                console.error("Error accessing the camera: ", error);
+            }
+            capturedImage.style.display = 'inline-block';
+        });
+        
+
+
+
+/*
+        const capscreenshot =document.getElementById("bthscrenshoot");
+        const capturableContent = document.getElementById('capturable-content');
+        const captura = document.getElementById('imgcaptura');
+
+        capscreenshot.addEventListener('click', function() {
+            // Capturar el contenido deseado como una imagen
+            html2canvas(capturableContent).then(function(canvas) {
+                // Convertir el canvas a una imagen
+                const imageURL = canvas.toDataURL('image/png');
+                
+                // Mostrar la imagen capturada
+                captura.src = imageURL;
+                captura.style.display = 'block';
+                
+                // Opcional: Descargar la imagen
+                const a = document.createElement('a');
+                a.href = imageURL;
+                a.download = 'captura.png'; // Nombre de archivo para la descarga
+                a.style.display = 'capturable-content';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                // Supongamos que tienes una imagen con el ID 'imagen-usuario'
+                const imagenUsuario = document.getElementById('captured-image');
+
+                // Agrega un evento de carga a la imagen
+                imagenUsuario.addEventListener('load', function() {
+                    // Luego, realiza la captura de pantalla aquí
+                    html2canvas(capturableContent).then(function(canvas) {
+                        // Resto del código de captura aquí
+                        });
+                        });
+        });
+    });*/
+
+
+            
+
+        if('share' in navigator){
+            $bthshare.addEventListener('click', share)
+            function share (){
+                navigator.share({
+                    tittle: 'La Nueva Mirada de Guarne',
+                    text: ' Apoyanos subiendo tu foto, ingresa al grupo de WhatsApp',
+                    url:"https://lanuevamiradadeguarne.vercel.app/"
+                })
+                .then(()=>{
+                    alert('Hemos logrado compartir')
+                })
+                .catch(()=>{
+                    alert('No se ha logrado compartir, pruebe en otro ordenador.')
+                })
+        }
+
+        }else {
+            alert('No está disponible el api de webshare')
+        }
+
+
+     
+     
+
+    </script>
 </body>
 </html>
-<script>
-    const capturableContent = document.getElementById("content-image");
-    const captureButton = document.getElementById("capture-button");
-    const imageInput = document.getElementById("image-input");
-    const capturedImage = document.getElementById("captured-image");    
-    const canvas = document.createElement("canvas");
-    const $bthshare= document.querySelector('#bthshare');
-    const botonwsp = document.getElementById("wsp");
-    const shareFacebookButton = document.getElementById("share-facebook");
-    const shareWhatsappButton = document.getElementById("share-whatsapp");
-
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        capturableContent.style.width = "100%";
-    }
-    
-    
-    wsp.addEventListener("click", function(){
-        const url ="https://chat.whatsapp.com/F3UQxS9hi5q6jbp3E7Sdfr";
-        window.open(url, "_blank");
-    })
-
-    imageInput.addEventListener("change", (e) => {
-        const file = e.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                capturedImage.src = e.target.result;
-            };
-
-            reader.readAsDataURL(file);
-        }
-    });
-
-    captureButton.addEventListener("click", () => {
-        const video = document.createElement("video");
-
-        navigator.mediaDevices.getUserMedia({ video: true })
-        .then((stream) => {
-            video.srcObject = stream;
-            return new Promise((resolve) => {
-                video.onloadedmetadata = () => {
-                    resolve(video);
-                };
-            });
-        })
-        .then((video) => {
-            const canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            const context = canvas.getContext("2d");
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const imageURL = canvas.toDataURL("image/png");
-            capturedImage.src = imageURL;
-            video.srcObject.getTracks().forEach((track) => track.stop());
-        })
-        .catch((error) => {
-            console.error("Error accessing the camera: ", error);
-        });
-    });
-
-    shareFacebookButton.addEventListener('click', function () {
-            // Utiliza html2canvas para capturar el contenido del div
-        html2canvas(capturableContent).then(function(canvas) {
-            // Convierte el canvas en una imagen en formato PNG
-            var imgData = canvas.toDataURL('image/png');
-            
-            // Envía la imagen como base64 a través de AJAX
-            enviarImagenBase64(imgData)
-            .then(function(response) {
-                // Obtiene la URL de la imagen que deseas compartir
-                var imageURL = 'https://prueba.codetec.edu.co/' + response;
-                console.log(imageURL);
-                compartirEnFacebook(imageURL);
-            })
-            .catch(function(error) {
-                console.error("Error:", error);
-                // Maneja el error, si ocurre alguno
-            });
-
-
-
-            // Crea un enlace (link) para descargar la imagen
-            var a = document.createElement('a');
-            a.href = imgData;
-            a.download = 'voto.png'; // Puedes ajustar el nombre del archivo aquí
-
-            // Simula un clic en el enlace para iniciar la descarga
-            a.click();
-        });
-    });
-
-    shareWhatsappButton.addEventListener('click', function () {
-
-        // Utiliza html2canvas para capturar el contenido del div
-        html2canvas(capturableContent).then(function(canvas) {
-            // Convierte el canvas en una imagen en formato PNG
-            var imgData = canvas.toDataURL('image/png');
-            
-            // Envía la imagen como base64 a través de AJAX
-            enviarImagenBase64(imgData)
-            .then(function(response) {
-                // Obtiene la URL de la imagen que deseas compartir
-                var imageURL = 'https://prueba.codetec.edu.co/' + response;
-                compartirEnWhatsApp(imageURL);
-            })
-            .catch(function(error) {
-                console.error("Error:", error);
-                // Maneja el error, si ocurre alguno
-            });
-
-
-
-            // Crea un enlace (link) para descargar la imagen
-            var a = document.createElement('a');
-            a.href = imgData;
-            a.download = 'voto.png'; // Puedes ajustar el nombre del archivo aquí
-
-            // Simula un clic en el enlace para iniciar la descarga
-            a.click();
-        });
-    });
-
-    function enviarImagenBase64(base64Data) {
-        return new Promise(function(resolve, reject) {
-        // Realiza una solicitud AJAX para enviar la imagen base64 al servidor
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', 'https://prueba.codetec.edu.co/subir.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-        // Define los datos que deseas enviar (en este caso, la imagen base64)
-            var data = 'imagen=' + encodeURIComponent(base64Data);
-
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                    // La solicitud AJAX se completó con éxito, puedes manejar la respuesta aquí
-                        resolve(xhr.responseText);
-                    } else {
-                    // La solicitud AJAX falló
-                        reject(new Error("Error al enviar la imagen"));
-                    }
-                }
-            };
-
-            xhr.send(data);
-        });
-    }
-
-    function compartirEnWhatsApp(imagenURL) {
-        // Construye la URL de WhatsApp con la imagen adjunta
-        var whatsappURL = 'https://api.whatsapp.com/send?text=' + encodeURIComponent('Echa un vistazo a esta imagen') + '&amp;image=' + encodeURIComponent(imagenURL);
-        // Abre la URL de WhatsApp en una nueva ventana o pestaña
-        window.open(whatsappURL, '_blank');
-    }
-
-    function compartirEnFacebook(imagenURL){
-        // Crea la URL para compartir en Facebook
-        var facebookShareURL = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(imagenURL);
-        // Abre una ventana emergente para compartir en Facebook
-        window.open(facebookShareURL, 'Compartir en Facebook', 'width=600,height=400');
-    }
-
-</script>
