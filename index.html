@@ -121,6 +121,7 @@
             .then(function(response) {
                 // Obtiene la URL de la imagen que deseas compartir
                 var imageURL = 'https://prueba.codetec.edu.co/' + response;
+                console.log(imageURL);
                 compartirEnFacebook(imageURL);
             })
             .catch(function(error) {
@@ -206,7 +207,7 @@
 
     function compartirEnFacebook(imagenURL){
         // Crea la URL para compartir en Facebook
-        var facebookShareURL = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(imageURL);
+        var facebookShareURL = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(imagenURL);
         // Abre una ventana emergente para compartir en Facebook
         window.open(facebookShareURL, 'Compartir en Facebook', 'width=600,height=400');
     }
