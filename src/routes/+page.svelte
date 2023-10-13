@@ -23,7 +23,7 @@
 
 <svelte:head>
   <title>Maria Camila | Alcaldesa 2024 - 2027</title>
-  <meta property="og:title" content="La Nueva Mirada de Guarne" />
+  <meta property="og:title" content="Apoya a Maria Camila Dándole ¡ CLICK AQUÍ y COMPARTIENDO !" />
   <meta
     property="og:description"
     content="Yo voto Maria Camila alcaldesa de Guarne 2024-2027"
