@@ -1,29 +1,41 @@
 <script lang="ts">
   import '../app.postcss'
-  import placeholder from '$lib/assets/placeholder.webp'
   import createImage from '$lib/utils/createImage'
   import shareOnFacebook from '$lib/utils/shareOnFacebook'
+  import placeholder from '$lib/assets/placeholder.webp'
+  import iconRotate from '$lib/assets/icon-rotate.png'
   import type { ChangeEventHandler } from 'svelte/elements'
   import type { PageData } from './$types'
 
   export let data: PageData
 
-  let imageUrl: string
+  let photo: File
+  let rotate = 0
   let isLoading = false
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = async event => {
+  const handleChange: ChangeEventHandler<HTMLInputElement> = event => {
     const file = event.currentTarget.files?.[0]
 
-    if (file && file.type.startsWith('image/')) {
-      isLoading = true
-      imageUrl = await createImage(file)
-    }
+    if (file && file.type.startsWith('image/')) photo = file
+  }
+
+  const handleClick = async () => {
+    isLoading = true
+
+    const image = await createImage(photo, rotate)
+
+    shareOnFacebook(image)
+
+    isLoading = false
   }
 </script>
 
 <svelte:head>
   <title>Maria Camila | Alcaldesa 2024 - 2027</title>
-  <meta property="og:title" content="Apoya a Maria Camila Dándole ¡ CLICK AQUÍ y COMPARTIENDO !" />
+  <meta
+    property="og:title"
+    content="Apoya a Maria Camila Dándole ¡ CLICK AQUÍ y COMPARTIENDO !"
+  />
   <meta
     property="og:description"
     content="Yo voto Maria Camila alcaldesa de Guarne 2024-2027"
@@ -36,20 +48,32 @@
 
 <main class="grid min-h-[100svh] place-items-center p-6">
   <section class="flex flex-col items-center">
-    <figure
-      class="mask mask-squircle"
-      class:animate-pulse={isLoading}
-      class:opacity-80={isLoading}
-    >
-      <img
-        class="object-cover"
-        src={imageUrl || placeholder}
-        alt=""
-        width="500"
-        height="261"
-        on:load={() => (isLoading = false)}
-      />
-    </figure>
+    <div class="relative">
+      <figure class="mask mask-squircle">
+        <img
+          class="aspect-square w-[261px] object-cover"
+          src={photo ? '/frame.webp' : placeholder}
+          alt=""
+          width="500"
+          height="261"
+        />
+      </figure>
+      {#if photo}
+        <img
+          class="absolute inset-x-0 top-[28px] -z-[1] mx-auto aspect-square
+            w-[167px] object-cover"
+          style="rotate: {rotate}deg"
+          src={URL.createObjectURL(photo)}
+          alt=""
+        />
+        <button
+          class="btn btn-circle absolute bottom-0 right-0"
+          on:click={() => (rotate = rotate === 270 ? 0 : rotate + 90)}
+        >
+          <img src={iconRotate} alt="Rotate" width="32" height="32" />
+        </button>
+      {/if}
+    </div>
     <div class="mb-8 mt-7 flex flex-wrap justify-center gap-4">
       <label class="btn" class:btn-disabled={isLoading}>
         Seleccionar imagén
@@ -76,9 +100,12 @@
     <div class="flex flex-wrap justify-center gap-4">
       <button
         class="btn btn-info btn-outline"
-        disabled={!imageUrl || isLoading}
-        on:click={() => shareOnFacebook(imageUrl)}
+        disabled={!photo || isLoading}
+        on:click={handleClick}
       >
+        {#if isLoading}
+          <span class="loading loading-spinner" />
+        {/if}
         Compartir en Facebook
       </button>
       <a

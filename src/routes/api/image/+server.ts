@@ -5,12 +5,14 @@ import { put } from '@vercel/blob'
 import sharp from 'sharp'
 
 export const POST: RequestHandler = async ({ fetch, url, request }) => {
+  const rotate = url.searchParams.get('rotate')
   const [frame, photo] = await Promise.all([
     fetch(`${url.origin}/frame.webp`).then(response => response.arrayBuffer()),
     request.arrayBuffer()
   ])
 
   const buffer = await sharp(photo)
+    .rotate(Number(rotate))
     .resize({ width: 167, height: 167, fit: 'cover' })
     .toBuffer()
     .then(buffer => {
