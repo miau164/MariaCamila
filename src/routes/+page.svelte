@@ -74,29 +74,16 @@
         </button>
       {/if}
     </div>
-    <div class="mb-8 mt-7 flex flex-wrap justify-center gap-4">
-      <label class="btn" class:btn-disabled={isLoading}>
-        Seleccionar imagén
-        <input
-          type="file"
-          accept="image/*"
-          disabled={isLoading}
-          hidden
-          on:change={handleChange}
-        />
-      </label>
-      <label class="btn xl:hidden" class:btn-disabled={isLoading}>
-        Tomar foto
-        <input
-          type="file"
-          capture="user"
-          accept="image/*"
-          disabled={isLoading}
-          hidden
-          on:change={handleChange}
-        />
-      </label>
-    </div>
+    <label class="btn mb-8 mt-7" class:btn-disabled={isLoading}>
+      Seleccionar imagén
+      <input
+        type="file"
+        accept="image/*"
+        disabled={isLoading}
+        hidden
+        on:change={handleChange}
+      />
+    </label>
     <div class="flex flex-wrap justify-center gap-4">
       <button
         class="btn btn-info btn-outline"
